@@ -87,7 +87,7 @@ For windows, install and run this script to collect logs: Install-Script -Name G
 Incoming: linux collector
 ```
 
-### Windows platform
+### Windows platform (support Arc servers)
 1. open powershell window and run this command to download log collector tool: `Install-Script -Name GCLogCollection`
 2. find script location with this command: `Get-Command -Name GCLogCollection | Format-List Path`
 3. move to script folder and run `.\GCGCLogCollection.ps1`
