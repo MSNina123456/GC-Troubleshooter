@@ -20,19 +20,19 @@ With option 6, we will check:
 * Guest configuration extension provisioning status
 * Managed identity enabled
 * Policy assignment permission if its effect is 'DeployIfNotExists'
-* Custom OS image template
+* Policy rule OS image template (just for reference)
 * Non compliant policies with reason
 
 ## Usage
 Sample 1 (recommended):
 ```
-.\GuestConfigurationTroubleshooter.ps1 -ResourceGroupName <resource group name of VM> -VMName <VM name>
+.\GCTroubleshooter.ps1 -ResourceGroupName <resource group name of VM> -VMName <VM name>
 ```
   
 Sample 2:
 ```
 $myVM = Get-AzVM -ResourceGroupName <resource group name of VM> -Name <VM name>
-.\GuestConfigurationTroubleshooter.ps1 -VM $myVM
+.\GCTroubleshooter.ps1 -VM $myVM
 ```
 
 Sample output:
