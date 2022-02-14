@@ -5,6 +5,7 @@ Guest configuration troubleshooter tool including log collection
 This tool will help you to identify some Azure Guest Configuration policy deployment issues.
 
 In this tool, we have below options to select:
+```
 1: Check RP Microsoft.GuestConfiguration registration
 2: Check Guest configuration extension
 3: Check managed identity
@@ -13,6 +14,7 @@ In this tool, we have below options to select:
 6: Check above all
 7: Collect logs
 Q: Press 'Q' to quit.
+```
 
 ### Note: 
 With option 6, we will check:
