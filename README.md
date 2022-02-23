@@ -137,6 +137,36 @@ na1-win2012R2_10_23_02_11_2022
 012R2_10_23_02_11_2022.zip
 ```
 
-### Linux platform
-incoming
+### Linux platform (support Arc servers)
+login linux OS and run this command: 
+```
+wget https://raw.githubusercontent.com/MSNina123456/GC-Troubleshooter/main/GCLogCollection.sh&& bash ./GCLogCollection.sh
+```
 
+Output 
+1. dowonload:
+```
+--2022-02-23 13:58:32--  https://raw.githubusercontent.com/MSNina123456/GC-Troubleshooter/main/GCLogCollection.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 2606:50c0:8000::154, 2606:50c0:8001::154, 2606:50c0:8002::154, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|2606:50c0:8000::154|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6623 (6.5K) [text/plain]
+Saving to: ‘GCLogCollection.sh’
+
+      GCLog   0%       0  --.-KB/s              GCLogCollec 100%   6.47K  --.-KB/s    in 0s     
+
+2022-02-23 13:58:32 (28.4 MB/s) - ‘GCLogCollection.sh’ saved [6623/6623]
+```
+2. log collection:
+```
+=================================================
+Tool log data is being redirecting to /tmp/GCLogCollector.1645595912.nina-ubuntu16
+23-02-2022T13:58:32 +08 || INFO || python_prereq_check || Checking Python version and module
+23-02-2022T13:58:34 +08 || INFO || isArc || This is Arc server, will collect Arc GC logs
+23-02-2022T13:58:34 +08 || INFO || CollectExtensionLogs || Collecting arc agent logs
+23-02-2022T13:58:34 +08 || INFO || CollectExtensionLogs || Collecting guest configuration extension logs
+23-02-2022T13:58:49 +08 || INFO || ArchiveLogs || Data collection completed
+23-02-2022T13:58:50 +08 || INFO || ArchiveLogs || Analyzing collected logs for errors
+23-02-2022T13:58:53 +08 || WARN || CheckLogsForErrors || Found errors in logs, stored all error messages under path: /GCLogCollector.1645595912.nina-ubuntu16/error.log
+23-02-2022T13:59:03 +08 || INFO || ArchiveLogs || Collected logs available at: /tmp/GCLogCollector.1645595912.nina-ubuntu16.tgz
+```
