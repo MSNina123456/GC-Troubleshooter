@@ -1348,7 +1348,7 @@ function Get-GuestConfigurationPolicyHealth
 function Collect-Logs
 {
     Write-Host "For windows, install and run this script to collect logs: Install-Script -Name GCLogCollection"
-    Write-Host "Incoming: linux collector"
+    Write-Host "For linux, run this command to collect logs: wget https://raw.githubusercontent.com/MSNina123456/GC-Troubleshooter/main/GCLogCollection.sh&& bash ./GCLogCollection.sh"
 }
 
 function Show-Menu
