@@ -86,7 +86,7 @@ Q: Press 'Q' to quit.
 Please select an option: 7
 You selected option #7
 For windows, install and run this script to collect logs: Install-Script -Name GCLogCollection
-Incoming: linux collector
+For linux, run this command to collect logs: wget https://raw.githubusercontent.com/MSNina123456/GC-Troubleshooter/main/GCLogCollection.sh&& bash ./GCLogCollection.sh
 ```
 
 ### Windows platform (support Arc servers)
