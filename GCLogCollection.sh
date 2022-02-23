@@ -1,5 +1,4 @@
 #!/bin/bash
-
 write-log()
 {
     timestamp=$(date '+%d-%m-%YT%H:%M:%S %Z')
