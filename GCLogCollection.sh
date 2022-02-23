@@ -1,5 +1,6 @@
 #!/bin/bash
-write-log()
+
+write_log()
 {
     timestamp=$(date '+%d-%m-%YT%H:%M:%S %Z')
     Level=$1
@@ -12,7 +13,7 @@ write-log()
 python_prereq_check()
 {
     # check python
-    write-log 'INFO' 'python_prereq_check' 'Checking Python version and module'
+    write_log 'INFO' 'python_prereq_check' 'Checking Python version and module'
     PYTHON=""
     PY_VERSION=""
 
@@ -25,7 +26,7 @@ python_prereq_check()
             "Python 2.6"* | "Python 2.7"* )
                 ;;
             * )
-                write-log 'WARN' 'python_prereq_check' "Python version $PY_VERSION is not supported by most tools, please install python 2.6 or newer"
+                write_log 'WARN' 'python_prereq_check' "Python version $PY_VERSION is not supported by most tools, please install python 2.6 or newer"
                 return 1
                 ;;
         esac
@@ -35,7 +36,7 @@ python_prereq_check()
         PY_VERSION=$((python3 --version) 2>&1)
 
     else
-        write-log 'WARN' 'python_prereq_check' "No version of Python found on machine, please install python 2.6 or newer"
+        write_log 'WARN' 'python_prereq_check' "No version of Python found on machine, please install python 2.6 or newer"
         return 1
     fi
 
@@ -54,7 +55,7 @@ python_prereq_check()
     for pkg in $pkgs; do
         $PYTHON -c "import $pkg" 1> /dev/null 2> /dev/null
         if [ $? -ne 0 ]; then
-            write-log 'WARN' 'python_prereq_check' "Python package '$pkg' not installed, please install python 2.6 or newer"
+            write_log 'WARN' 'python_prereq_check' "Python package '$pkg' not installed, please install python 2.6 or newer"
             success=1
         fi
     done
@@ -67,10 +68,10 @@ isArc()
     imds1=$(curl "http://169.254.169.254/metadata/instance/compute?api-version=2021-02-01" -f -s -H "Metadata: true" --connect-timeout 1)
     imds2=$(curl "http://168.63.129.16/metadata/instance/compute?api-version=2021-02-01" -f -s -H "Metadata: true" --connect-timeout 1)
     if [[ -z $imds1 && -z $imds2 ]]; then
-        write-log 'INFO' 'isArc' 'This is Arc server, will collect Arc GC logs'
+        write_log 'INFO' 'isArc' 'This is Arc server, will collect Arc GC logs'
         arc=1
     else
-        write-log 'INFO' 'isArc' 'This is Azure VM, will collect Azure VM GC logs'
+        write_log 'INFO' 'isArc' 'This is Azure VM, will collect Azure VM GC logs'
         arc=0
     fi
 }
@@ -80,9 +81,9 @@ CollectExtensionLogs()
     extfolder=/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-*
     cmd=`ls /var/lib/waagent | grep -i Microsoft.GuestConfiguration.ConfigurationforLinux`
     if [ -z "$cmd" ];then
-        write-log 'WARN' 'CollectExtensionLogs' "Guest configuration extension installer folder does not exist. Path: $extfolder"
+        write_log 'WARN' 'CollectExtensionLogs' "Guest configuration extension installer folder does not exist. Path: $extfolder"
     else
-        write-log 'INFO' 'CollectExtensionLogs' 'Collecting guest configuration installer logs'
+        write_log 'INFO' 'CollectExtensionLogs' 'Collecting guest configuration installer logs'
         mkdir -p ./$output_path/config
         cp $extfolder/status/* ./$output_path/config
         cp $extfolder/config/* ./$output_path/config
@@ -91,18 +92,18 @@ CollectExtensionLogs()
     agentlog=/var/log/waagent.log
     cmd=`ls /var/log | grep -i waagent.log`
     if [ -z "$cmd" ];then
-        write-log 'WARN' 'CollectExtensionLogs' "Guest agent log does not exist. Path: $agentlog"
+        write_log 'WARN' 'CollectExtensionLogs' "Guest agent log does not exist. Path: $agentlog"
     else
-        write-log 'INFO' 'CollectExtensionLogs' 'Collecting guest agent logs'
+        write_log 'INFO' 'CollectExtensionLogs' 'Collecting guest agent logs'
         cp $agentlog ./$output_path/
     fi
 
     gcfolder=/var/log/azure
     cmd=`ls /var/log/azure | grep -i guest`
     if [ -z "$cmd" ];then
-        write-log 'WARN' 'CollectExtensionLogs' "Guest configuration extension folder does not exist under $gcfolder"
+        write_log 'WARN' 'CollectExtensionLogs' "Guest configuration extension folder does not exist under $gcfolder"
     else
-        write-log 'INFO' 'CollectExtensionLogs' 'Collecting guest configuration extension logs'
+        write_log 'INFO' 'CollectExtensionLogs' 'Collecting guest configuration extension logs'
         mkdir -p ./$output_path/guestconfig
         cp $gcfolder/Microsoft.GuestConfiguration.ConfigurationforLinux/*.log ./$output_path/guestconfig
         cp $gcfolder/guest-configuration/*.log ./$output_path/guestconfig
@@ -111,9 +112,9 @@ CollectExtensionLogs()
     workerlog=/var/lib/GuestConfig/gc_agent_logs
     cmd=`ls /var/lib | grep -i GuestConfig`
     if [ -z "$cmd" ];then
-        write-log 'WARN' 'CollectExtensionLogs' "Guest configuration worker folder does not exist under $workerlog"
+        write_log 'WARN' 'CollectExtensionLogs' "Guest configuration worker folder does not exist under $workerlog"
     else
-        write-log 'INFO' 'CollectExtensionLogs' 'Collecting guest configuration worker logs'
+        write_log 'INFO' 'CollectExtensionLogs' 'Collecting guest configuration worker logs'
         mkdir -p ./$output_path/gc_agent_logs
         cp -R $workerlog/* ./$output_path/gc_agent_logs
     fi 
@@ -124,9 +125,9 @@ CollectArcGCLogs()
     arcagent=/var/opt/azcmagent
     cmd=`ls /var/opt | grep -i azcmagent`
     if [ -z "$cmd" ];then
-        write-log 'WARN' 'CollectExtensionLogs' "Arc agent log does not exist under $arcagent"
+        write_log 'WARN' 'CollectExtensionLogs' "Arc agent log does not exist under $arcagent"
     else
-        write-log 'INFO' 'CollectExtensionLogs' 'Collecting arc agent logs'
+        write_log 'INFO' 'CollectExtensionLogs' 'Collecting arc agent logs'
         cp $arcagent/log/himds.log ./$output_path/
         cp $arcagent/log/azcmagent.log ./$output_path/
         cp $arcagent/agentconfig.json ./$output_path/
@@ -135,9 +136,9 @@ CollectArcGCLogs()
     extlog=/var/lib/GuestConfig
     cmd=`ls /var/lib | grep -i guest`
     if [ -z "$cmd" ];then
-        write-log 'WARN' 'CollectExtensionLogs' "Guest configuration extension folder does not exist under $extlog"
+        write_log 'WARN' 'CollectExtensionLogs' "Guest configuration extension folder does not exist under $extlog"
     else
-        write-log 'INFO' 'CollectExtensionLogs' 'Collecting guest configuration extension logs'
+        write_log 'INFO' 'CollectExtensionLogs' 'Collecting guest configuration extension logs'
         mkdir -p ./$output_path/arc_policy_logs
         mkdir -p ./$output_path/gc_agent_logs
         mkdir -p ./$output_path/ext_mgr_logs
@@ -151,23 +152,23 @@ CheckLogsForErrors()
 {
     cmd=`grep -Ri error ./$output_path/* > ./$output_path/error.log`
     if [ -s ./$output_path/error.log ]; then
-        write-log 'WARN' 'CheckLogsForErrors' "Found errors in logs, stored all error messages under path: /$output_path/error.log"
+        write_log 'WARN' 'CheckLogsForErrors' "Found errors in logs, stored all error messages under path: /$output_path/error.log"
     else
-        write-log 'INFO' 'CheckLogsForErrors' 'There is not error message found'
+        write_log 'INFO' 'CheckLogsForErrors' 'There is not error message found'
     fi
 }
 
 ArchiveLogs()
 {
-    write-log 'INFO' 'ArchiveLogs' 'Data collection completed'
+    write_log 'INFO' 'ArchiveLogs' 'Data collection completed'
 
     #analysis error in logs
-    write-log 'INFO' 'ArchiveLogs' 'Analyzing collected logs for errors'
+    write_log 'INFO' 'ArchiveLogs' 'Analyzing collected logs for errors'
     CheckLogsForErrors
 
     tar -czf $output_path.tgz ./$output_path
-    
-    write-log 'INFO' 'ArchiveLogs' "Collected logs available at: /tmp/$output_path.tgz"
+
+    write_log 'INFO' 'ArchiveLogs' "Collected logs available at: /tmp/$output_path.tgz"
 
     rm -rf ./$output_path
 }
