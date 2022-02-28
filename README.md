@@ -45,27 +45,45 @@ You selected option #6
 Microsoft.GuestConfiguration is registered under current subscription
 MSI is enabled on this VM
 Checking for extension "AzurePolicyForWindows"...
-The extension "AzurePolicyForWindows" was deployed successfully
-Provisioning succeeded
+The extension "AzurePolicyForWindows" was not deployed successfully or was not deployed at all, reference: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/guest-configuration
 ===Non Compliant policy checking===
 Would you still like to continue?
-There are 11 policies assigned to this scope, so this test will take some time.
+There are 13 non compliant policies assigned to this scope, so this test will take some time.
+[Y] Yes [N] No [S] Suspend [?] Help (default is "Yes"): 
+Found Guest Configuration policy : Deploy the Windows Guest Configuration extension to enable Guest Configuration assignments on Windows VMs
+Assignment name: xxx
+Assignment Id: /subscriptions/xxx/resourcegroups/test-rg/providers/microsoft.authorization/policyassignments/xxx
+Definition Id: /providers/microsoft.authorization/policydefinitions/xxx
+Applies to : /subscriptions/xxx/resourcegroups/test-rg/providers/microsoft.compute/virtualmachines/2016core
+Non compliant reason : ResourceNotFound
+......
+Found Guest Configuration policy : Windows web servers should be configured to use secure communication protocols
+Assignment name: SecurityCenterBuiltIn
+Assignment Id: /subscriptions/xxx/providers/microsoft.authorization/policyassignments/securitycenterbuiltin
+Definition Id: /providers/microsoft.authorization/policydefinitions/xxx
+Applies to : /subscriptions/xxx/resourcegroups/test-rg/providers/microsoft.compute/virtualmachines/2016core
+Non compliant reason : GCExtensionInstalled=False;MSIEnabled=True;UserIdentityEnabled=False
+......
+Would you still like to continue?
+There are 14 policies assigned to this scope, so this test will take some time.
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Yes"):
-Found Guest Configuration policy : Audit Windows machines on which the DSC configuration is not compliant
-All VMs images are applicable to custom OS template
+Found Guest Configuration policy : Add system-assigned managed identity to enable Guest Configuration assignments on virtual machines with no identities
+Below VMs are not applicable to this definition 3cf2ab00-13f1-4d0c-8971-2ac904541a7e : 2016core suse15 , so they may be non-compliant after assignment
 Found Guest Configuration policy : Deploy prerequisites to enable Guest Configuration policies on virtual machines
 Policy was in an initiative
-Checking permission of policy effect DeployIfNotExists for assignment ***
-/subscriptions/***/resourceGroups/***/providers/Microsoft.Authorization/roleAssignments/*** has permission of Contributoron scope /subscriptions/***/resourceGroups/***
-All VMs images are applicable to custom OS template
-The policy "Audit Windows machines on which the DSC configuration is not compliant" is not in an initiative
-
+Checking permission of policy effect DeployIfNotExists for assignment 9d055037ceaa4b6791d1b02f
+/subscriptions/xxx/resourceGroups/test-rg/providers/Microsoft.Authorization/roleAssignments/xxx has permission of Contributoron scope /subscriptions/xxx/resourceGroups/test-rg
+/subscriptions/xxx/resourceGroups/test-rg/providers/Microsoft.Authorization/roleAssignments/xxx has permission of Contributoron scope /subscriptions/xxx/resourceGroups/test-rg
+Below VMs are not applicable to one of this initiative defintions xxx : 2016core suse15 , so they may be non-compliant after assignment    
+Found Guest Configuration policy : Add system-assigned managed identity to enable Guest Configuration assignments on virtual machines with no identities
+Below VMs are not applicable to this definition xxx : 2016core suse15 , so they may be non-compliant after assignment
+The policy "Add system-assigned managed identity to enable Guest Configuration assignments on virtual machines with no identities" is not in an initiative
 
 Name                           Value
 ----                           -----
+CheckResults                   {True, @{Status=True; Name=MSI}, @{Status=False; Name=GuestConfigurationExtension; Details=System.Collections.Hashtable; Errors=System.Obje… 
+Messages                       {The Guest Configuration Extension on this machine is not healthy, There is non-compliant policy on this VM}
 OverallStatus                  False
-CheckResults                   {True, @{Status=True; Name=MSI}, @{Status=True; Name=GuestConfigurationExtension; Details=System.Collections.Hashtable}, False…}
-Messages                       {}
 ```
 
 ## Log collection
