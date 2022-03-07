@@ -87,7 +87,7 @@ OverallStatus                  False
 ```
 
 ## Log collection
-If you select option #7, it will print out command for log collection. Of course, you can run command directly in OS, please see detailed steps:
+
 ```
 ================ Please select troubleshoot scenario ================
 
@@ -106,6 +106,7 @@ You selected option #7
 For windows, install and run this script to collect logs: Install-Script -Name GCLogCollection
 For linux, run this command to collect logs: wget https://raw.githubusercontent.com/MSNina123456/GC-Troubleshooter/main/GCLogCollection.sh&& bash ./GCLogCollection.sh
 ```
+If you select option #7, it will print out command for log collection. Of course, you can run command directly in OS as below.
 
 ### Windows platform (support Arc servers)
 1. open powershell window and run this command to download log collector tool: `Install-Script -Name GCLogCollection`
