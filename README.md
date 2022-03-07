@@ -1,6 +1,6 @@
-[GC-Troubleshooter](#gc-troubleshooter)
+- [GC-Troubleshooter](#gc-troubleshooter)
   * [Overview](#overview)
-    + [Note:](#note-)
+    + [Note](#note)
   * [Usage](#usage)
   * [Log collection](#log-collection)
     + [Windows platform (support Arc servers)](#windows-platform--support-arc-servers-)
@@ -24,7 +24,7 @@ In this tool, we have below options to select:
 Q: Press 'Q' to quit.
 ```
 
-### Note: 
+### Note
 With option 6, we will check:
 * Microsoft.GuestConfiguration registration
 * Guest configuration extension provisioning status
