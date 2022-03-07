@@ -34,6 +34,7 @@ With option 6, we will check:
 
 ## Usage
 Download script GCTroubleshooter.ps1 and run it by referring below 2 examples:
+
 Example 1 (recommended):
 ```
 .\GCTroubleshooter.ps1 -ResourceGroupName <resource group name of VM> -VMName <VM name>
