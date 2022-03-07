@@ -1,10 +1,9 @@
 - [GC-Troubleshooter](#gc-troubleshooter)
   * [Overview](#overview)
-    + [Note](#note)
   * [Usage](#usage)
   * [Log collection](#log-collection)
-    + [Windows platform (support Arc servers)](#windows-platform--support-arc-servers-)
-    + [Linux platform (support Arc servers)](#linux-platform--support-arc-servers-)
+    + [Windows platform](#windows-platform)
+    + [Linux platform](#linux-platform)
 
 # GC-Troubleshooter
 Guest configuration troubleshooter tool including log collection
@@ -24,7 +23,7 @@ In this tool, we have below options to select:
 Q: Press 'Q' to quit.
 ```
 
-### Note
+**Note**
 With option 6, we will check:
 * Microsoft.GuestConfiguration registration
 * Guest configuration extension provisioning status
@@ -116,7 +115,8 @@ For linux, run this command to collect logs: wget https://raw.githubusercontent.
 ```
 If you select option #7, it will print out command for log collection. Of course, you can run command directly in OS as below.
 
-### Windows platform (support Arc servers)
+### Windows platform
+(support Arc servers)
 1. open powershell window and run this command to download log collector tool: `Install-Script -Name GCLogCollection`
 2. find script location with this command: `Get-Command -Name GCLogCollection | Format-List Path`
 3. move to script folder and run `.\GCGCLogCollection.ps1`
@@ -164,7 +164,8 @@ na1-win2012R2_10_23_02_11_2022
 012R2_10_23_02_11_2022.zip
 ```
 
-### Linux platform (support Arc servers)
+### Linux platform
+(support Arc servers)
 login linux OS and run this command: 
 ```
 wget https://raw.githubusercontent.com/MSNina123456/GC-Troubleshooter/main/GCLogCollection.sh&& bash ./GCLogCollection.sh
