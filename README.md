@@ -87,7 +87,7 @@ OverallStatus                  False
 ```
 
 ## Log collection
-select option #7
+If you select option #7, it will print out command for log collection. Of course, you can run command directly in OS, please see detailed steps:
 ```
 ================ Please select troubleshoot scenario ================
 
