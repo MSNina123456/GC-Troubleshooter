@@ -1,13 +1,10 @@
-- [GC-Troubleshooter](#gc-troubleshooter)
+[GC-Troubleshooter](#gc-troubleshooter)
   * [Overview](#overview)
     + [Note:](#note-)
   * [Usage](#usage)
   * [Log collection](#log-collection)
     + [Windows platform (support Arc servers)](#windows-platform--support-arc-servers-)
     + [Linux platform (support Arc servers)](#linux-platform--support-arc-servers-)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 # GC-Troubleshooter
 Guest configuration troubleshooter tool including log collection
