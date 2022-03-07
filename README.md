@@ -166,6 +166,7 @@ na1-win2012R2_10_23_02_11_2022
 
 ### Linux platform
 (support Arc servers)
+
 login linux OS and run this command: 
 ```
 wget https://raw.githubusercontent.com/MSNina123456/GC-Troubleshooter/main/GCLogCollection.sh&& bash ./GCLogCollection.sh
