@@ -33,18 +33,19 @@ With option 6, we will check:
 * Non compliant policies with reason
 
 ## Usage
-Sample 1 (recommended):
+Download script GCTroubleshooter.ps1 and run it by referring below 2 examples:
+Example 1 (recommended):
 ```
 .\GCTroubleshooter.ps1 -ResourceGroupName <resource group name of VM> -VMName <VM name>
 ```
   
-Sample 2:
+Example 2:
 ```
 $myVM = Get-AzVM -ResourceGroupName <resource group name of VM> -Name <VM name>
 .\GCTroubleshooter.ps1 -VM $myVM
 ```
 
-Sample output:
+Example output:
 ```
 =====================================================================
 Please select an option: 6
