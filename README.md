@@ -33,7 +33,7 @@ With option 6, we will check:
 * Non compliant policies with reason
 
 ## Usage
-Download script GCTroubleshooter.ps1 with WindowsConditionTemplate.json and LinuxConditionTemplate.json and run it by referring below 2 examples:
+Download script GCTroubleshooter.ps1 with WindowsConditionTemplate.json and LinuxConditionTemplate.json, then run it by referring below 2 examples:
 
 Example 1 (recommended):
 ```
